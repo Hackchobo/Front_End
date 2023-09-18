@@ -1,0 +1,10 @@
+#container { 
+    display:flex; flex-direction: row; 
+    width: 500px; height: 700px; background-color: #ff7f50; 
+    justify-content: space-between;
+    align-items: center;
+}
+#container div {background-color: #fff; height: 100px; width: 100px;}
+#container div:first-of-type {color: aquamarine;}
+#container div:nth-child(2) {color: aqua !important;} /*important 를 먹이면 가장 최우선이 된다.*/
+div {color: red; border: 1px solid #ccc;}
