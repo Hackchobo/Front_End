@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "container">
+    </div>
+</body>
+<script>
+    const $divContainer = document.querySelector('.container');
+    // document.getElementsByClassName('container')[0]; //무조건 배열이므로 잘정해줘야된다.
+
+    fetch('https://picsum.photos/v2/list')
+    .then(function(res) { return res.json(); })
+    .then(function(data){
+        console.log(data);
+        if(data.length > 0){
+            makeList(data);
+        }
+    })
+    .catch(function(data){
+        console.log('ddd');
+        console.error(data);
+        
+    });
+
+    function makeList(data){
+        data.forEach(function(item) {
+            console.log(item);
+
+            const img = makeItem(item);
+            $divContainer.append(img);
+        })
+    }
+
+    function makeItem(item){
+        const img = document.createElement('img');
+        img.src = item.download_url;
+        img.height = item.height/10;
+        img.width = item.width/10;
+        img.alt = item.author;
+        return img;
+    }
+</script>
+</html>

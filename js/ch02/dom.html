@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <input type="number" id = "n1" value="">
+        <input type="number" id = "n2" value="">
+        <button id="btn_plus">더하기</button>
+        
+    </div>
+    <div id="result"></div>
+</body>
+<script>
+    const $n1 = document.getElementById('n1'); // 단수로 넘어온다.
+    const $n2 = document.querySelector('#n2'); // 단수이고, all 이면 복수로 넘어온다.
+    const $btnPlus = document.querySelector('#btn_plus'); // 단수이고, all 이면 복수로 넘어온다.
+    const $divResult = document.querySelector('#result');
+    $btnPlus.addEventListener('click', function(e){
+        
+        const n1Val = parseInt($n1.value);
+        const n2Val = parseInt($n2.value);
+
+        console.log('n1Val:', n1Val);
+        console.log('n2Val:', n2Val);
+
+        const result = n1Val + n2Val;
+        console.log('result:', result);
+
+        // $divResult.innerHTML = `<b>${result}</b>`;
+        // $divResult.innerText = result;
+        const div = document.createElement('div');
+        div.addEventListener('click', function(e){
+            const ths = e.target; // 값을 들고와서 하는 것이다. closer를 사용하나? closer공부해보기
+            alert(`나는 값이${ths.innerText} 입니다.`);
+        });
+        div.innerText = result;
+        // $divResult.appendChild(div); // 계속 데이터를 쌓고 싶을때
+        $divResult.prepend(div); // 계산후에 데이터를 위로쌓고 싶을때
+        
+    });
+
+    console.log($n1.value);
+    console.log($n2.value);
+</script>
+</html>

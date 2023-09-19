@@ -33,13 +33,16 @@
                 }
             }
             return temp;
+        },
+        map : function(cb) {
+        const temp = [];
+        for(var i=0; i<this.length; i++){
+            var returnVal = cb(this[i], i, this);
+            temp.push(returnVal);
         }
+        return temp;
     }
     
-    const arr2 = arr.filter(function(val, idx) {
-        return val % 2 === 0;
-    });
-
-    console.log(arr2);
+    }
 </script>
 </html>
